@@ -5,7 +5,8 @@
 #include "conio.h"
 #include "windows.h"
 #include <stdio.h>
-
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 
 #define C 70
@@ -61,53 +62,47 @@ void Mapa3(int **mapa);
 void Mapa4(int **mapa);
 void Mapa5(int **mapa);
 
+void Nivel1(int **mapa);
+void Nivel2(int **mapa);
+void Nivel3(int **mapa);
+void Nivel4(int **mapa);
+void Nivel5(int **mapa);
+
+
+void Terminado1(int ** mapa);
+void Terminado2(int ** mapa);
+void Terminado3(int ** mapa);
+void Terminado4(int ** mapa);
+void Terminado5(int ** mapa);
+
 void MoverEnemigo(int **mapa, int &x, int &y, int &mov);
 void PintarMapa(int Arr[F][C]);
 void PintarResultado(int &puntaje);
 void Jugar(int **mapa, int &puntaje, int &ea1, int &ea2, int &mova1, int &eb1, int &eb2, int &mova2);
 
+void instrucciones_del_juego(int **mapa);
+void Intro_del_juego(int **mapa);
+int random(int numero);
+
+
 int _tmain(int argc, _TCHAR* argv[])
 {
-	char texto[20] = "Jugador xD";
-	int opcion;
-	int nivel = 1;
-	SetColor(3); PintarResultado(Puntos);
-	//int *Vidas  = new int;
-	//int *Puntos = new int;
-	int **Mapa;
-
-	//*Vidas  = 3;
-	//*Puntos = 0;
-	Mapa = new int*[F];
-
-	for (int i = 0; i < F; i++)
-	{
-		Mapa[i] = new int[C];
-	}
+int nivel = 1;
 
 
+int **Mapa;
 
-	Mapa1(Mapa);
-	cout << endl;
-	_getch();
+Mapa = new int*[F];
 
-	Mapa2(Mapa);
-	cout << endl;
-	_getch();
+for (int i = 0; i < F; i++)
+{
+Mapa[i] = new int[C];
+}
 
-	Mapa3(Mapa);
-	cout << endl;
-	_getch();
+Intro_del_juego(Mapa);
+Menu();
 
-	Mapa4(Mapa);
-	cout << endl;
-	_getch();
-
-	Mapa5(Mapa);
-	cout << endl;
-	cout << "El nombre del main 5es: " << texto;
-	_getch();
-	return 0;
+return 0;
 }
 void gotoxy(int x, int y)
 {
@@ -121,11 +116,70 @@ void SetColor(int color)
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
-void Menu(){
-	cout << "					Menu" << endl;
-	cout << "-----------------------------------------" << endl;
-	cout << "	1) Ingrese nombre" << endl;
-	cout << "	2) Empezar" << endl;
+void Menu()
+{
+	int **Mapa;
+	Mapa = new int*[F];
+
+	for (int i = 0; i < F; i++)
+	{
+		Mapa[i] = new int[C];
+	}
+
+	int opcion;
+	do
+	{
+
+
+
+		cout << "     Menu del juego                " << endl;
+		cout << "----------------------" << endl;
+		cout << "1. Empezar el juego " << endl;
+		cout << "2. Instrucciones del juego " << endl;
+		cout << "3. Salir " << endl;
+		
+		do
+		{
+			cout << "ingresar la opcion : ";
+			cin >> opcion;
+		} while (opcion<0 || opcion >4);
+		
+		system("cls");
+
+		switch (opcion)
+		{
+		case 1:
+			SetColor(3); PintarResultado(Puntos);
+
+
+			Mapa1(Mapa);
+			_getch();
+
+			Mapa2(Mapa);
+			_getch();
+
+			Mapa3(Mapa);
+			_getch();
+
+			Mapa4(Mapa);
+			_getch();
+
+			Mapa5(Mapa);
+			_getch();
+
+			break;
+		case 2:
+			instrucciones_del_juego(Mapa);
+			system("cls");
+			break;
+		case 3:
+			exit(0);
+		}
+
+		
+	} while (opcion != 1);
+
+	
 }
 void PintarMapa(int **mapa){
 
@@ -159,6 +213,8 @@ void PintarMapa(int **mapa){
 void PintarResultado(int &puntaje){
 	cout << " tienes: " << puntaje << "   Puntos " << endl;
 }
+
+void Nivel1(int **mapa){}
 void Mapa1(int **mapa){
 
 	int Mapa1[F][C] = {
@@ -205,6 +261,10 @@ void Mapa1(int **mapa){
 	Jugar(mapa, puntaje1, xE1, yE1, move1, xE2, yE2, move2);
 	_getch();
 }
+void Terminado1(int ** mapa){}
+
+
+void Nivel2(int **mapa){}
 void Mapa2(int **mapa){
 	int Mapa2[F][C] = {
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -249,6 +309,9 @@ void Mapa2(int **mapa){
 	Jugar(mapa, puntaje2, xE3, yE3, move3, xE4, yE4, move4);
 	_getch();
 }
+void Terminado2(int ** mapa){}
+
+void Nivel3(int **mapa){}
 void Mapa3(int **mapa){
 	int Mapa3[F][C] = {
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -293,6 +356,9 @@ void Mapa3(int **mapa){
 	Jugar(mapa, puntaje3, xE5, yE5, move5, xE6, yE6, move6);
 	_getch();
 }
+void Terminado3(int ** mapa){}
+
+void Nivel4(int **mapa){}
 void Mapa4(int **mapa){
 
 	int Mapa4[F][C] = {
@@ -338,6 +404,9 @@ void Mapa4(int **mapa){
 	Jugar(mapa, puntaje4, xE7, yE7, move7, xE8, yE8, move8);
 	_getch();
 }
+void Terminado4(int ** mapa){}
+
+void Nivel5(int **mapa){}
 void Mapa5(int **mapa){
 	int Mapa5[F][C] = {
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -382,6 +451,7 @@ void Mapa5(int **mapa){
 	Jugar(mapa, puntaje5, xE9, yE9, move9, xE10, yE10, move10);
 	_getch();
 }
+void Terminado5(int ** mapa){}
 
 void MoverEnemigo(int **mapa, int &x, int &y, int &mov){
 	if (mapa[y][x + mov] == 1){
@@ -390,6 +460,7 @@ void MoverEnemigo(int **mapa, int &x, int &y, int &mov){
 	gotoxy(x + xd, y + yd); cout << " "; gotoxy(x + xd + mov, y + yd); x = x + mov; cout << "X"; //Sleep(2);
 
 }
+
 void Jugar(int **mapa, int &puntaje, int &ea1, int &ea2, int &mova1, int &eb1, int &eb2, int &mova2){
 	//PintarResultado(Puntos);
 	gotoxy(xd, yd);
@@ -465,15 +536,113 @@ void Jugar(int **mapa, int &puntaje, int &ea1, int &ea2, int &mova1, int &eb1, i
 		else{
 			MoverEnemigo(mapa, ea1, ea2, mova1);
 			//MoverEnemigo(mapa, ea2, eb2, mova2);
-			Sleep(350);
+			Sleep(20);
 
 		}
 	} while (Puntos != puntaje);
 
 }
+void Intro_del_juego(int **mapa)
+{
 
 
-void Opcion1(char nombre[]){
+	SetColor(14);
+	gotoxy(2, 6); cout << "1111111111     111111111111  111         111111111111111  1111111111111                                                            " << endl;
+	gotoxy(2, 7); cout << "111    111     1111    1111  111         111         111  111       111                               " << endl;
+	gotoxy(2, 8); cout << "111            1111    1111  111         111         111  111       111                         " << endl;
+	gotoxy(2, 9); cout << "1111111111     1111    1111  111         111111111111111  111       111                   " << endl;
+	gotoxy(2, 10); cout << "       111     1111     111  111         111         111  1111111111111                       " << endl;
+	gotoxy(2, 11); cout << "       111     1111    1111  111         111         111  111   111                         " << endl;
+	gotoxy(2, 12); cout << "1111111111     111111111111  1111111111  111         111  111    1111                                              " << endl;
+	gotoxy(2, 13); cout << "                                                                                                            " << endl;
+
+
+
+	gotoxy(5, 16); cout << "          111111111111111  111111111111111   11111  11111                                            " << endl;
+	gotoxy(5, 17); cout << "          111              1111       1111    1111  1111                      " << endl;
+	gotoxy(5, 18); cout << "          111     11       1111       1111     111  111                          " << endl;
+	gotoxy(5, 19); cout << "          1111111111       1111       1111       1111                         " << endl;
+	gotoxy(5, 20); cout << "          111     11       1111       1111     111  111                        " << endl;
+	gotoxy(5, 21); cout << "          111              1111       1111     1111  1111                         " << endl;
+	gotoxy(5, 22); cout << "          111              111111111111111    11111  11111                       " << endl;
+	Sleep(200);
+
+
+
+	gotoxy(11, 28);
+	SetColor(6);
+	cout << "presione una tecla para continuar....";
+
+
+	_getch();
+	system("cls");
+
+
+}
+void instrucciones_del_juego(int **mapa)
+{
+
+	SetColor(2);
+	gotoxy(11, 5);
+	cout << "            BIENVENIDO A   SOLAR FOX "; cout << endl;
+	SetColor(2);
+	gotoxy(11, 6);
+	cout << "        ------------------------------------------------"; cout << endl;
+	SetColor(2);
+	gotoxy(11, 7);
+	cout << "           Instrucciones del juego: " << endl << endl;
+
+
+	SetColor(6);
+	gotoxy(11, 10);
+	cout << " [UP] - " << char(24) << ": Moverse para arriba. "; cout << endl;
+	SetColor(6);
+	gotoxy(11, 11);
+	cout << " [DOWN] - ↓: Moverse para abajo. "; cout << endl;
+	SetColor(6);
+	gotoxy(11, 12);
+	cout << " [LEFt] - ← : Moverse para izquierda. "; cout << endl;
+	SetColor(6);
+	gotoxy(11, 13);
+	cout << " [RIGHT] - → : Movercse para derecha. "; cout << endl;
+	SetColor(6);
+	gotoxy(11, 14);
+	SetColor(7);
+	cout << char(1); cout << " -- Personaje " << endl;
+	gotoxy(11, 15);
+	SetColor(8);
+	cout << char(2); cout << " -- Enemigo " << endl;
+	gotoxy(11, 16);
+	SetColor(9);
+	cout << char(176);  cout << " -- Bloques no transitables " << endl;
+	gotoxy(11, 17);
+	SetColor(10);
+	cout << char(6); cout << " -- Lo que debe comer en su totalidad " << endl;
+	gotoxy(11, 18);
+	SetColor(11);
+
+
+
+
+	SetColor(3);
+	gotoxy(11, 21);
+	cout << "---------------------------------------------------------------";
+	SetColor(3);
+	gotoxy(11, 22);
+	cout << " El juego finalizara cuando pierda sus 5 vidas " << endl << endl;
+	SetColor(3);
+	gotoxy(11, 23);
+	cout << " Suerteee !!! " << endl << endl;
+	SetColor(3);
+	gotoxy(11, 24);
+	cout << " Presione ESC para volver al inicio... " << endl << endl;
+
+
+	_getch();
+
+}
+
+/*void Opcion1(char nombre[]){
 	cout << "Ingres nuevo nombre: "; cin >> nombre;
 	cout << "eligio: " << nombre;
 }
@@ -518,4 +687,9 @@ void Opcion2(int nivel){
 		system("cls");
 		break;
 	}
+}*/
+
+int random(int numero){
+	
+	return 3;
 }
